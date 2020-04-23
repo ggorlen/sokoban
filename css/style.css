@@ -7,6 +7,16 @@ body {
   background: url("../assets/wallpaper.png");
 }
 
+/* preload images https://stackoverflow.com/a/14390213/6243352 */
+body::after{
+  position: absolute; 
+  width: 0; 
+  height: 0; 
+  overflow: hidden; 
+  z-index: -1; 
+  content: url("../assets/boxg.png") url("../assets/playerg.png");
+}
+
 a, a:hover, a:active, a:visited {
   color: #000;
   text-decoration: none !important;
