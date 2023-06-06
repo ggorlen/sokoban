@@ -1,7 +1,6 @@
 "use strict";
 
 // make main functions available in the global scope
-let showSoko;
 let sequenceInput;
 let levelInput;
 let clickHandler;
@@ -67,7 +66,7 @@ window.onload = function() {
   }; // end clickHandler
   
   // displays sokoban html output
-  showSoko = function() {
+  const showSoko = function() {
       
     // show main sokoban game
     document.getElementById("soko").innerHTML = soko.toHTML();
@@ -110,6 +109,32 @@ window.onload = function() {
   soko = new Sokoban(ORIGINAL_LEVELS, 0);
   let keyAllowed = true;
   let mvmtToggle = true;
+
+  const updateLevelQueryParam = () => {
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get("level");
+
+    if (soko.levelNum + 1 !== +level) {
+      const url = new URL(window.location);
+      url.searchParams.set("level", soko.levelNum + 1);
+      window.history.pushState({path: url.toString()}, "", url.toString());
+    }
+  };
+
+  const handleStateChange = () => {
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get("level");
+
+    if (level && +level <= ORIGINAL_LEVELS.length && +level > 0) {
+      soko.switchLevel(+level - 1);
+    }
+
+    showSoko();
+    updateLevelQueryParam();
+  };
+
+  addEventListener("popstate", handleStateChange);
+  handleStateChange();
   showSoko();
   
   // add key listeners
@@ -170,6 +195,7 @@ window.onload = function() {
     
     // display the new position
     showSoko();
+    updateLevelQueryParam();
   }; // end document.onkeydown
   
   // listen for enter key on sequence input textarea
