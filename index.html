@@ -35,6 +35,8 @@
           href="#sokosequence" style="color: #000 !important;">show move sequence</a>]
         [<a data-toggle="collapse" data-parent="#accordion" 
           href="#sokosequenceinput" style="color: #000 !important;">input move sequence</a>]
+      </div>
+      <div style="text-align: center;">
         [<a data-toggle="collapse" data-parent="#accordion" 
           href="#sokolevelinput" style="color: #000 !important;">input level</a>]
         [<a data-toggle="collapse" data-parent="#accordion" 
@@ -55,7 +57,6 @@
               <textarea data-toggle="tooltip" data-placement="right" 
                 title="example (case insensitive): uudrlurrrlld" 
                 style="resize: vertical; height: 60px; width: 100%;" id="seqinput"></textarea>
-              <br>
               <div style="float: right; margin-top: 3px;">
                 <input type="submit">
                 <input type="reset">            
@@ -69,7 +70,6 @@
           <div id="sokolevelinput" class="panel-collapse collapse">
             <form onsubmit="levelInput(); return false;">
               <textarea style="resize: vertical; height: 160px; width: 100%;" id="levelinput"></textarea>
-              <br>
               <div style="float: right; margin-top: 3px;">
                 <input type="submit">
                 <input type="reset">
@@ -92,7 +92,7 @@
               </tr>
               <tr>
                 <td class="ralign">fixed movement</td>
-                <td>arrow keys<br>
+                <td>arrow keys</td>
               </tr>
               <tr>
                 <td class="ralign">continuous movement</td>
